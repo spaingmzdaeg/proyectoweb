@@ -29,15 +29,18 @@ function pagination(totalpages, currentpage) {
       const userphoto = player.photo ? player.photo : "default.png";
       playerRow = `<tr>
             <td class="align-middle"><img src="uploads/${userphoto}" class="img-thumbnail rounded float-left"></td>
-            <td class="align-middle">${player.pname}</td>
-            <td class="align-middle">${player.email}</td>
-            <td class="align-middle">${player.phone}</td>
+            <td class="align-middle">${player.id_team}</td>
+            <td class="align-middle">${player.first_name}</td>
+            <td class="align-middle">${player.last_name}</td>
+            <td class="align-middle">${player.kit}</td>
+            <td class="align-middle">${player.position}</td>
+            <td class="align-middle">${player.country}</td>
             <td class="align-middle">
               <a href="#" class="btn btn-success mr-3 profile" data-toggle="modal" data-target="#userViewModal"
-                title="Prfile" data-id="${player.id}"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+                title="Prfile" data-id="${player.id_player}"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
               <a href="#" class="btn btn-warning mr-3 edituser" data-toggle="modal" data-target="#userModal"
-                title="Edit" data-id="${player.id}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-              <a href="#" class="btn btn-danger deleteuser" data-userid="14" title="Delete" data-id="${player.id}"><i
+                title="Edit" data-id="${player.id_player}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+              <a href="#" class="btn btn-danger deleteuser" data-userid="14" title="Delete" data-id="${player.id_player}"><i
                   class="fa fa-trash-o fa-lg"></i></a>
             </td>
           </tr>`;
@@ -48,7 +51,7 @@ function pagination(totalpages, currentpage) {
   function getplayers() {
     var pageno = $("#currentpage").val();
     $.ajax({
-      url: "/phpcrudajax/ajax.php",
+      url: "/phpcrudajaxspain/ajax.php",
       type: "GET",
       dataType: "json",
       data: { page: pageno, action: "getusers" },
@@ -85,7 +88,7 @@ function pagination(totalpages, currentpage) {
           ? "Player has been updated Successfully!"
           : "New Player has been added Successfully!";
       $.ajax({
-        url: "/phpcrudajax/ajax.php",
+        url: "/phpcrudajaxspain/ajax.php",
         type: "POST",
         dataType: "text",
         data: new FormData(this),
@@ -129,10 +132,10 @@ function pagination(totalpages, currentpage) {
     //  get user
   
     $(document).on("click", "a.edituser", function () {
-      var pid = $(this).data("id");
+      var pid = $(this).data("id_player");
   
       $.ajax({
-        url: "/phpcrudajax/ajax.php",
+        url: "/phpcrudajaxspain/ajax.php",
         type: "GET",
         dataType: "json",
         data: { id: pid, action: "getuser" },
@@ -141,10 +144,13 @@ function pagination(totalpages, currentpage) {
         },
         success: function (player) {
           if (player) {
-            $("#username").val(player.pname);
-            $("#email").val(player.email);
-            $("#phone").val(player.phone);
-            $("#userid").val(player.id);
+            $("#id_team").val(player.id_team);
+            $("#first_name").val(player.first_name);
+            $("#last_name").val(player.last_name);
+            $("#kit").val(player.kit);
+            $("#position").val(player.position);
+            $("#country").val(player.country);
+            $("#userid").val(player.id_player);
           }
           $("#overlay").fadeOut();
         },
@@ -157,10 +163,10 @@ function pagination(totalpages, currentpage) {
     // delete user
     $(document).on("click", "a.deleteuser", function (e) {
       e.preventDefault();
-      var pid = $(this).data("id");
+      var pid = $(this).data("id_player");
       if (confirm("Are you sure want to delete this?")) {
         $.ajax({
-          url: "/phpcrudajax/ajax.php",
+          url: "/phpcrudajaxspain/ajax.php",
           type: "GET",
           dataType: "json",
           data: { id: pid, action: "deleteuser" },
@@ -187,9 +193,9 @@ function pagination(totalpages, currentpage) {
     // get profile
   
     $(document).on("click", "a.profile", function () {
-      var pid = $(this).data("id");
+      var pid = $(this).data("id_player");
       $.ajax({
-        url: "/phpcrudajax/ajax.php",
+        url: "/phpcrudajaxspain/ajax.php",
         type: "GET",
         dataType: "json",
         data: { id: pid, action: "getuser" },
@@ -201,11 +207,11 @@ function pagination(totalpages, currentpage) {
                     <img src="uploads/${userphoto}" class="rounded responsive" />
                   </div>
                   <div class="col-sm-6 col-md-8">
-                    <h4 class="text-primary">${player.pname}</h4>
+                    <h4 class="text-primary">${player.id_team}</h4>
                     <p class="text-secondary">
-                      <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
+                      <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.position}
                       <br />
-                      <i class="fa fa-phone" aria-hidden="true"></i> ${player.phone}
+                      <i class="fa fa-phone" aria-hidden="true"></i> ${player.kit}
                     </p>
                   </div>
                 </div>`;
@@ -223,7 +229,7 @@ function pagination(totalpages, currentpage) {
       const searchText = $(this).val();
       if (searchText.length > 1) {
         $.ajax({
-          url: "/phpcrudajax/ajax.php",
+          url: "/phpcrudajaxspain/ajax.php",
           type: "GET",
           dataType: "json",
           data: { searchQuery: searchText, action: "search" },

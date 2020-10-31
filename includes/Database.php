@@ -4,7 +4,7 @@ class Database
     private $dbServer = 'localhost';
     private $dbUser = 'root';
     private $dbPassword = '';
-    private $dbName = 'playersdb';
+    private $dbName = 'soccerleague';
     protected $conn;
 
     public function __construct()

@@ -19,7 +19,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle-o"
                     aria-hidden="true"></i>
               </div>
-              <select name="idteam" id="idteam" required="required">
+              <select name="id_team" id="id_team" required="required">
                  <option value="1">AC Milan</option> 
                  <option value="3" selected>Borussia Dortmund</option>
                  <option value="4">Lyon</option>

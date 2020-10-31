@@ -7,9 +7,12 @@ if (!empty($action)) {
 }
 
 if ($action == 'adduser' && !empty($_POST)) {
-    $pname = $_POST['username'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
+    $id_team = $_POST['id_team'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $kit = $_POST['kit'];
+    $position = $_POST['position'];
+    $country = $_POST['country'];
     $photo = $_FILES['photo'];
     $playerId = (!empty($_POST['userid'])) ? $_POST['userid'] : '';
 
@@ -18,16 +21,22 @@ if ($action == 'adduser' && !empty($_POST)) {
     if (!empty($photo['name'])) {
         $imagename = $obj->uploadPhoto($photo);
         $playerData = [
-            'pname' => $pname,
-            'email' => $email,
-            'phone' => $phone,
+            'id_team' => $id_team,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'kit' => $kit,
+            'position' => $position,
+            'country' => $country,
             'photo' => $imagename,
         ];
     } else {
         $playerData = [
-            'pname' => $pname,
-            'email' => $email,
-            'phone' => $phone,
+            'id_team' => $id_team,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'kit' => $kit,
+            'position' => $position,
+            'country' => $country,
         ];
     }
 
@@ -38,7 +47,7 @@ if ($action == 'adduser' && !empty($_POST)) {
     }
 
     if (!empty($playerId)) {
-        $player = $obj->getRow('id', $playerId);
+        $player = $obj->getRow('id_player', $playerId);
         echo json_encode($player);
         exit();
     }
@@ -62,16 +71,16 @@ if ($action == "getusers") {
 }
 
 if ($action == "getuser") {
-    $playerId = (!empty($_GET['id'])) ? $_GET['id'] : '';
+    $playerId = (!empty($_GET['id_player'])) ? $_GET['id_player'] : '';
     if (!empty($playerId)) {
-        $player = $obj->getRow('id', $playerId);
+        $player = $obj->getRow('id_player', $playerId);
         echo json_encode($player);
         exit();
     }
 }
 
 if ($action == "deleteuser") {
-    $playerId = (!empty($_GET['id'])) ? $_GET['id'] : '';
+    $playerId = (!empty($_GET['id_player'])) ? $_GET['id_player'] : '';
     if (!empty($playerId)) {
         $isDeleted = $obj->deleteRow($playerId);
         if ($isDeleted) {

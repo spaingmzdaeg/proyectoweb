@@ -37,7 +37,7 @@ class Player extends Database
 
     }
 
-    public function update($data, $id)
+    public function update($data, $id_player)
     {
         if (!empty($data)) {
             $fileds = '';
@@ -51,11 +51,11 @@ class Player extends Database
                 $x++;
             }
         }
-        $sql = "UPDATE {$this->tableName} SET {$fileds} WHERE id=:id";
+        $sql = "UPDATE {$this->tableName} SET {$fileds} WHERE id_player=:id_player";
         $stmt = $this->conn->prepare($sql);
         try {
             $this->conn->beginTransaction();
-            $data['id'] = $id;
+            $data['id_player'] = $id_player;
             $stmt->execute($data);
             $this->conn->commit();
         } catch (PDOException $e) {
@@ -74,7 +74,7 @@ class Player extends Database
 
     public function getRows($start = 0, $limit = 4)
     {
-        $sql = "SELECT * FROM {$this->tableName} ORDER BY id DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM {$this->tableName} ORDER BY id_player DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -87,12 +87,12 @@ class Player extends Database
     }
 
     // delete row using id
-    public function deleteRow($id)
+    public function deleteRow($id_player)
     {
-        $sql = "DELETE FROM {$this->tableName}  WHERE id=:id";
+        $sql = "DELETE FROM {$this->tableName}  WHERE id_player=:id_player";
         $stmt = $this->conn->prepare($sql);
         try {
-            $stmt->execute([':id' => $id]);
+            $stmt->execute([':id_player' => $id_player]);
             if ($stmt->rowCount() > 0) {
                 return true;
             }
@@ -134,7 +134,7 @@ class Player extends Database
 
     public function searchPlayer($searchText, $start = 0, $limit = 4)
     {
-        $sql = "SELECT * FROM {$this->tableName} WHERE pname LIKE :search ORDER BY id DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM {$this->tableName} WHERE pname LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':search' => "{$searchText}%"]);
         if ($stmt->rowCount() > 0) {
