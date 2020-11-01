@@ -73,7 +73,7 @@
                     aria-hidden="true"></i>
               </div>
               <select name="position" id="position" required="required">
-                 <option value="GoalKepper">Goalkeeper</option> 
+                 <option value="Goalkeeper">Goalkeeper</option> 
                  <option value="Defender" selected>Defender</option>
                  <option value="Midfielder">Midfielder</option>
                  <option value="Forward">Forward</option>
