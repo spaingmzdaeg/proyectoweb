@@ -134,7 +134,7 @@ class Player extends Database
 
     public function searchPlayer($searchText, $start = 0, $limit = 4)
     {
-        $sql = "SELECT * FROM {$this->tableName} WHERE pname LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM {$this->tableName} WHERE first_name LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':search' => "{$searchText}%"]);
         if ($stmt->rowCount() > 0) {

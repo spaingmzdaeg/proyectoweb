@@ -114,6 +114,99 @@ function pagination(totalpages, currentpage) {
         },
       });
     });
+     $(document).on("click", "a.edituser", function () {
+    var pid = $(this).data("id");
+
+    $.ajax({
+      url: "/phpcrudajaxspain/ajax.php",
+      type: "GET",
+      dataType: "json",
+      data: { id_player: pid, action: "getuser" },
+      beforeSend: function () {
+        $("#overlay").fadeIn();
+      },
+      success: function (player) {
+        if (player) {
+          $("#id_team").val(player.id_team);
+          $("#first_name").val(player.first_name);
+          $("#last_name").val(player.last_name);
+          $("#kit").val(player.kit);
+          $("#position").val(player.position);
+          $("#country").val(player.country);
+          $("#userid").val(player.id_player);
+        }
+        $("#overlay").fadeOut();
+      },
+      error: function () {
+        console.log("something went wrong");
+      },
+    });
+  });
+
+  // delete user
+  $(document).on("click", "a.deleteuser", function (e) {
+    e.preventDefault();
+    var pid = $(this).data("id");
+    console.log(pid);
+    if (confirm("Are you sure want to delete this?")) {
+      $.ajax({
+        url: "/phpcrudajaxspain/ajax.php",
+        type: "GET",
+        dataType: "json",
+        data: { id_player: pid, action: "deleteuser" },
+        beforeSend: function () {
+          $("#overlay").fadeIn();
+        },
+        success: function (res) {
+          if (res.deleted == 1) {
+            $(".message")
+              .html("Player has been deleted successfully!")
+              .fadeIn()
+              .delay(3000)
+              .fadeOut();
+            getplayers();
+            $("#overlay").fadeOut();
+          }
+        },
+        error: function () {
+          console.log("something went wrong");
+        },
+      });
+    }
+  });
+  // get profile
+
+  $(document).on("click", "a.profile", function () {
+    var pid = $(this).data("id_player");
+    $.ajax({
+      url: "/phpcrudajaxspain/ajax.php",
+      type: "GET",
+      dataType: "json",
+      data: { id_player: pid, action: "getuser" },
+      success: function (player) {
+        if (player) {
+          const userphoto = player.photo ? player.photo : "default.png";
+          const profile = `<div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <img src="uploads/${userphoto}" class="rounded responsive" />
+                </div>
+                <div class="col-sm-6 col-md-8">
+                  <h4 class="text-primary">${player.pname}</h4>
+                  <p class="text-secondary">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
+                    <br />
+                    <i class="fa fa-phone" aria-hidden="true"></i> ${player.phone}
+                  </p>
+                </div>
+              </div>`;
+          $("#profile").html(profile);
+        }
+      },
+      error: function () {
+        console.log("something went wrong");
+      },
+    });
+  });
     // pagination
     $(document).on("click", "ul.pagination li a", function (e) {
       e.preventDefault();
@@ -129,100 +222,7 @@ function pagination(totalpages, currentpage) {
       $("#addform")[0].reset();
       $("#userid").val("");
     });
-    //  get user
   
-    $(document).on("click", "a.edituser", function () {
-      var pid = $(this).data("id_player");
-  
-      $.ajax({
-        url: "/phpcrudajaxspain/ajax.php",
-        type: "GET",
-        dataType: "json",
-        data: { id: pid, action: "getuser" },
-        beforeSend: function () {
-          $("#overlay").fadeIn();
-        },
-        success: function (player) {
-          if (player) {
-            $("#id_team").val(player.id_team);
-            $("#first_name").val(player.first_name);
-            $("#last_name").val(player.last_name);
-            $("#kit").val(player.kit);
-            $("#position").val(player.position);
-            $("#country").val(player.country);
-            $("#userid").val(player.id_player);
-          }
-          $("#overlay").fadeOut();
-        },
-        error: function () {
-          console.log("something went wrong");
-        },
-      });
-    });
-  
-    // delete user
-    $(document).on("click", "a.deleteuser", function (e) {
-      e.preventDefault();
-      var pid = $(this).data("id_player");
-      if (confirm("Are you sure want to delete this?")) {
-        $.ajax({
-          url: "/phpcrudajaxspain/ajax.php",
-          type: "GET",
-          dataType: "json",
-          data: { id: pid, action: "deleteuser" },
-          beforeSend: function () {
-            $("#overlay").fadeIn();
-          },
-          success: function (res) {
-            if (res.deleted == 1) {
-              $(".message")
-                .html("Player has been deleted successfully!")
-                .fadeIn()
-                .delay(3000)
-                .fadeOut();
-              getplayers();
-              $("#overlay").fadeOut();
-            }
-          },
-          error: function () {
-            console.log("something went wrong");
-          },
-        });
-      }
-    });
-    // get profile
-  
-    $(document).on("click", "a.profile", function () {
-      var pid = $(this).data("id_player");
-      $.ajax({
-        url: "/phpcrudajaxspain/ajax.php",
-        type: "GET",
-        dataType: "json",
-        data: { id: pid, action: "getuser" },
-        success: function (player) {
-          if (player) {
-            const userphoto = player.photo ? player.photo : "default.png";
-            const profile = `<div class="row">
-                  <div class="col-sm-6 col-md-4">
-                    <img src="uploads/${userphoto}" class="rounded responsive" />
-                  </div>
-                  <div class="col-sm-6 col-md-8">
-                    <h4 class="text-primary">${player.id_team}</h4>
-                    <p class="text-secondary">
-                      <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.position}
-                      <br />
-                      <i class="fa fa-phone" aria-hidden="true"></i> ${player.kit}
-                    </p>
-                  </div>
-                </div>`;
-            $("#profile").html(profile);
-          }
-        },
-        error: function () {
-          console.log("something went wrong");
-        },
-      });
-    });
   
     // searching
     $("#searchinput").on("keyup", function () {
