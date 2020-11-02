@@ -1,4 +1,6 @@
 <?php 
+include_once 'Database.php';
+
 class User extends Database{
     private $name;
     private $username;
@@ -21,8 +23,8 @@ class User extends Database{
         $query->execute(['user' => $user]);
         
         foreach ($query as $currentUser) {
-            $this->name = $currentUser['name'];
-            $this->usename = $currentUser['username'];
+            $this->name = $currentUser['username'];
+            $this->username = $currentUser['username'];
         }
     }
 

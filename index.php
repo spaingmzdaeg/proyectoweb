@@ -39,9 +39,9 @@ include_once 'profile.php';
         </div>
       </div>
       <div class="col-3">
-        <button type="button" class="btn btn-primary" data-toggle="logout" data-target="#userLogout" id = "logout">LOGOUT <i
-            class="fa fa-user-circle-o"></i></button>
+      <a href="includes/logout.php" class="btn btn-primary">LOGOUT</a>
       </div>
+      <h1>Bienvenido <?php echo $user->getName();  ?></h1>
     </div>
 <?php
 include_once 'playerstable.php';
