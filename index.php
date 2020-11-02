@@ -38,6 +38,10 @@ include_once 'profile.php';
 
         </div>
       </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-primary" data-toggle="logout" data-target="#userLogout" id = "logout">LOGOUT <i
+            class="fa fa-user-circle-o"></i></button>
+      </div>
     </div>
 <?php
 include_once 'playerstable.php';
