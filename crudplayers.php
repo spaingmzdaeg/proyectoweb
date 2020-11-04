@@ -57,6 +57,29 @@ include_once 'playerstable.php';
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+
+    <script>  
+ $(document).ready(function(){  
+       function check_session()
+       {
+          $.ajax({
+            url:"./includes/CheckSession.php",
+            method:"POST",
+            success:function(data)
+            {
+              if(data == '1')
+              {
+                alert('Your session has been expired!');  
+                window.location.href="index.php";
+              }
+            }
+          })
+       }
+        setInterval(function(){
+          check_session();
+        }, 300000);  //10000 means 10 seconds
+ });  
+ </script>
     
   </div>
   <div id="overlay" style="display:none;">
