@@ -15,7 +15,7 @@
 <body>
   <div class="container">
     <div class="alert alert alert-primary" role="alert">
-      <h4 class="text-primary text-center">PHP CRUD Application Using jQuery Ajax</h4>
+      <h4 class="text-primary text-center">Premier League Player Database</h4>
     </div>
     <div class="alert alert-success text-center message" role="alert">
 
