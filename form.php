@@ -365,3 +365,4 @@
 </div>
 <!-- add/edit form modal end -->
 
+<script src="js/select.js"></script>
