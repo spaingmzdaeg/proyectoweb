@@ -177,7 +177,7 @@ function pagination(totalpages, currentpage) {
   // get profile
 
   $(document).on("click", "a.profile", function () {
-    var pid = $(this).data("id_player");
+    var pid = $(this).data("id");
     $.ajax({
       url: "/phpcrudajaxspain/ajax.php",
       type: "GET",
@@ -191,11 +191,11 @@ function pagination(totalpages, currentpage) {
                   <img src="uploads/${userphoto}" class="rounded responsive" />
                 </div>
                 <div class="col-sm-6 col-md-8">
-                  <h4 class="text-primary">${player.pname}</h4>
+                  <h4 class="text-primary">${player.first_name}</h4>
                   <p class="text-secondary">
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.last_name}
                     <br />
-                    <i class="fa fa-phone" aria-hidden="true"></i> ${player.phone}
+                    <i class="fa fa-phone" aria-hidden="true"></i> ${player.kit}
                   </p>
                 </div>
               </div>`;
