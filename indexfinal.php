@@ -31,10 +31,11 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-main">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="active" href="#">HOME</a></li>
-                    <li><a href="login.html">INICIAR SESION</a></li>
-                    <li><a href="#">FIXTURES</a></li>
-                    <li><a href="#">TABLA GENERAL</a></li>
-                    <li><a href="#">OPINION</a></li>
+                    <li><a href="index.php">LOGIN</a></li>
+                    <li><a href="index.php">STADIUMS</a></li>
+                    <li><a href="index.php">TEAMS</a></li>
+                    <li><a href="index.php">PLAYERS</a></li>
+                    <li><a href="index.php">JERSEYS</a></li>
                 </ul>
             </div>
 
