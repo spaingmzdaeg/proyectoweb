@@ -35,7 +35,7 @@
                     <li><a href="index.php">STADIUMS</a></li>
                     <li><a href="index.php">TEAMS</a></li>
                     <li><a href="index.php">PLAYERS</a></li>
-                    <li><a href="index.php">JERSEYS</a></li>
+                    <li><a href="crudjerseys.php">JERSEYS</a></li>
                 </ul>
             </div>
 
