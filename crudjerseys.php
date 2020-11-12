@@ -7,10 +7,54 @@
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="css/stylemenu.css">
 </head>
 <body>
   
-<v-app id="app">    
+
+
+<v-app id="app"> 
+<v-toolbar>
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title>JERSEY</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      <li><a class="active" href="#">HOME</a></li>
+                    <li><a href="index.php">LOGIN</a></li>
+                    <li><a href="index.php">STADIUMS</a></li>
+                    <li><a href="index.php">TEAMS</a></li>
+                    <li><a href="index.php">PLAYERS</a></li>
+                    <li><a href="index.php">JERSEYS</a></li>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn
+              dark
+              icon
+              v-on="on"
+            >
+              <v-icon color="primary">notifications</v-icon>
+            </v-btn>
+          </template>
+          <v-card>
+            <v-list dense>
+              <v-subheader>Notifications</v-subheader>
+              <v-divider></v-divider>
+              <v-list-tile
+                v-for="notification in notifications"
+                :key="`notification-key-${notification.id}`"
+              >
+                <v-list-tile-title>
+                  {{ notification.title }}
+                </v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-card>
+        </v-menu>
+      </v-toolbar-items>
+    </v-toolbar>
+  
     <v-data-table :headers="headers" :items="jerseys" :search="search" sort-by="id" class="elevation-3">     
       <template v-slot:top>    
         <v-system-bar color="indigo darken-2" dark></v-system-bar>
@@ -96,7 +140,10 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <!--Axios -->      
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>     
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
+ 
+ 
   <script src="js/vuecode.js"></script>
+ 
 </body>
 </html>

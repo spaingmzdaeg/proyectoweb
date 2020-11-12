@@ -10,9 +10,40 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/stylemenu.css">
 </head>
 
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#navbar-collapse-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="img/w3newbie2.png">
+            </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="active" href="#">HOME</a></li>
+                    <li><a href="index.php">LOGIN</a></li>
+                    <li><a href="index.php">STADIUMS</a></li>
+                    <li><a href="index.php">TEAMS</a></li>
+                    <li><a href="index.php">PLAYERS</a></li>
+                    <li><a href="index.php">JERSEYS</a></li>
+                </ul>
+            </div>
+
+        </div>
+    
+    </nav>
+
+
   <div class="container">
     <div class="alert alert alert-primary" role="alert">
       <h4 class="text-primary text-center">Premier League Player Database</h4>

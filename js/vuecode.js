@@ -1,16 +1,26 @@
+
+
 var url = "./includes/crudvuejersey.php";
 
 new Vue({
   el: '#app',
   vuetify: new Vuetify(),
   data: () => ({ 
+    notifications: [
+        { id: 1, title: 'Click Me' },
+        { id: 2, title: 'Click Me' },
+        { id: 3, title: 'Click Me' },
+        { id: 4, title: 'Click Me 2' }
+      ],
     search: '', //para el cuadro de búsqueda de datatables  
     snackbar: false, //para el mensaje del snackbar   
     textSnack: 'texto snackbar', //texto que se ve en el snackbar 
     dialog: false, //para que la ventana de dialogo o modal no aparezca automáticamente      
-    //definimos los headers de la datatables  
+    //definimos los headers de la datatables
+      
     headers: [
       {
+          
         text: 'ID',
         align: 'left',
         sortable: false,
