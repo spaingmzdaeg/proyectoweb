@@ -6,6 +6,7 @@ $(document).ready(function () {
         $("#addbuttonuser").val().length > 0
           ? "Player has been updated Successfully!"
           : "New Player has been added Successfully!";
+
       $.ajax({
         url: "/phpcrudajaxspain/ajaxusers.php",
         type: "POST",
@@ -33,4 +34,9 @@ $(document).ready(function () {
         },
       });
     });
+});
+
+var btn = document.getElementById('addbuttonuser');
+btn.addEventListener('click', function() {
+  document.location.href = 'index.php';
 });
