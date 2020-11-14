@@ -1,4 +1,10 @@
-
+function validateForm() {	
+  var recaptcha = document.forms["addformuser"]["g-recaptcha-response"].value;
+  if (recaptcha == "") {
+      alert("Please fill reCAPTCHA");
+      return false;
+  }
+}
 
 
 
@@ -6,7 +12,6 @@
 $(document).ready(function () {
   
     // add/edit user
-
     $(document).on("submit", "#addformuser", function (event) {
       event.preventDefault();
       var alertmsg =

@@ -19,7 +19,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12"></div>
             <div class="col-md-4 col-sm-4 col-xs-12">
 
-                <form class="form-container" id="addformuser">
+                <form class="form-container" id="addformuser" onsubmit="return validateForm()">
                     <h1>Sign up</h1>    
                     <div class="form-group">
                       <label for="exampleInputEmail1">Username</label>
