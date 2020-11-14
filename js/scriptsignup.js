@@ -1,11 +1,18 @@
+
+
+
+
+
 $(document).ready(function () {
+  
     // add/edit user
+
     $(document).on("submit", "#addformuser", function (event) {
       event.preventDefault();
       var alertmsg =
         $("#addbuttonuser").val().length > 0
-          ? "Player has been updated Successfully!"
-          : "New Player has been added Successfully!";
+          ? "User has been updated Successfully!"
+          : "New User has been added Successfully!";
 
       $.ajax({
         url: "/phpcrudajaxspain/ajaxusers.php",
@@ -25,6 +32,8 @@ $(document).ready(function () {
             $(".message").html(alertmsg).fadeIn().delay(3000).fadeOut();
            // getplayers();
             $("#overlay").fadeOut();
+            document.location.href = 'index.php';
+            
           }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -36,7 +45,5 @@ $(document).ready(function () {
     });
 });
 
-var btn = document.getElementById('addbuttonuser');
-btn.addEventListener('click', function() {
-  document.location.href = 'index.php';
-});
+
+

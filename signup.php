@@ -23,27 +23,30 @@
                     <h1>Sign up</h1>    
                     <div class="form-group">
                       <label for="exampleInputEmail1">Username</label>
-                      <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter email">
-                      <small id="emailHelp" class="form-text text-muted">No compartas datos personales con nadie.</small>
+                      <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter userna
+me" maxlength="20" minlength="10" required="required">
+                      <small id="emailHelp" class="form-text text-muted">
+do not share with anyone.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">No compartas datos personales con nadie.</small>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" minlength="10" required="required">
+                        <small id="emailHelp" class="form-text text-muted">Please Do no share with anyone.</small>
                       </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Password" maxlength="20" minlength="10" required="required">
                     </div>
-                    <div class="g-recaptcha" data-sitekey="6Leaa-IZAAAAAM4w2ns0yYaqE8Wu-9Zem1GqOjDL"></div>
+                    
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Confirmar Password</label>
-                        <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="Password">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="Password" maxlength="20" minlength="10" required="required">
                       </div>
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Aceptar Terminos y Condiciones</label>
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" required="required">
+                      <label class="form-check-label" for="exampleCheck1">I Agree Terms and Conditions</label>
                     </div>
+                    <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Leaa-IZAAAAAM4w2ns0yYaqE8Wu-9Zem1GqOjDL"></div>
                     <button type="submit" class="btn btn-success btn-block" id="addbuttonuser">SIGN UP</button>
                     <input type="hidden" name="action" value="adduser">
           <input type="hidden" name="userid" id="userid" value="">
@@ -60,6 +63,7 @@
     <script src="bibliotecas/js/bootstrap.min.js"></script>
     <!--============================SCRIPTS==============================-->
     <script src="js/scriptsignup.js"></script>
+
 
 </body>
 </html>
