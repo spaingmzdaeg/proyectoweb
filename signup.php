@@ -11,7 +11,8 @@
      <!--============================CSS==============================-->
      <link rel="stylesheet" href="css/styleform.css">
      <!--============================CSS==============================-->
-     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     
+     
 </head>
 <body>
     <div class="container-fluid bg">
@@ -19,7 +20,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12"></div>
             <div class="col-md-4 col-sm-4 col-xs-12">
 
-                <form class="form-container" id="addformuser" onsubmit="return validateForm()">
+                <form class="form-container" id="addformuser" method="post">
                     <h1>Sign up</h1>    
                     <div class="form-group">
                       <label for="exampleInputEmail1">Username</label>
@@ -62,7 +63,10 @@ do not share with anyone.</small>
     <!--============================SCRIPTS==============================-->
     <script src="bibliotecas/js/bootstrap.min.js"></script>
     <!--============================SCRIPTS==============================-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="js/scriptsignup.js"></script>
+
+    
 
 
 </body>

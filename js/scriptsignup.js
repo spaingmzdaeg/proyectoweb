@@ -1,19 +1,20 @@
-function validateForm() {	
+/*function validateForm() {	
   var recaptcha = document.forms["addformuser"]["g-recaptcha-response"].value;
   if (recaptcha == "") {
       alert("Please fill reCAPTCHA");
       return false;
-  }
+}else{
+  alert("true");
+  return true;
 }
+}*/
 
-
-
-
-$(document).ready(function () {
-  
-    // add/edit user
-    $(document).on("submit", "#addformuser", function (event) {
-      event.preventDefault();
+$('form').on('submit', function(e) {
+  if(grecaptcha.getResponse() == "") {
+    e.preventDefault();
+    alert("You can't proceed!");
+  } else {
+    event.preventDefault();
       var alertmsg =
         $("#addbuttonuser").val().length > 0
           ? "User has been updated Successfully!"
@@ -47,8 +48,14 @@ $(document).ready(function () {
                   console.log(errorThrown);
         },
       });
-    });
+    alert("Thank you");
+  }
 });
+
+
+//var response = grecaptcha.getResponse();
+
+
 
 
 
