@@ -9,10 +9,43 @@
 }
 }*/
 
+
+
+
+
 $('form').on('submit', function(e) {
+  $(document).ready(function() {
+    $("#addformuser").validate({
+      rules: {
+        username : {
+          required: true,
+          minlength: 10,
+          maxlength:20
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 10,
+          maxlength:20
+        },
+        confpassword:{
+          required: true,
+          minlength: 10,
+          maxlength:20
+        },
+        exampleCheck1:{
+          required: true
+        }
+      }
+    });
+  });
+  
   if(grecaptcha.getResponse() == "") {
     e.preventDefault();
-    alert("You can't proceed!");
+    alert("You can't proceed! FILL CAPTCHA");
   } else {
     event.preventDefault();
       var alertmsg =
@@ -48,9 +81,10 @@ $('form').on('submit', function(e) {
                   console.log(errorThrown);
         },
       });
-    alert("Thank you");
+    alert("User CREATED");
   }
 });
+
 
 
 //var response = grecaptcha.getResponse();
