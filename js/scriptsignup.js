@@ -106,6 +106,10 @@ $('form').on('submit', function(e) {
         });
       alert("User CREATED");
     }
+  }else{
+    e.preventDefault();
+    alert("form failed");
+    
   }
   
   
