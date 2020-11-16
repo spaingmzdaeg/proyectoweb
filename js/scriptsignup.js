@@ -20,7 +20,7 @@ function validateForm() {
   var email = document.forms["addformuser"]["email"].value;
   var password = document.forms["addformuser"]["password"].value;
   var confpassword = document.forms["addformuser"]["confpassword"].value;
-  var exampleCheck1 = document.forms["addformuser"]["exampleCheck1"].value;
+  var exampleCheck1 = document.forms["addformuser"]["exampleCheck1"];
   
   if (username == "") {
     alert("username must be filled out");
