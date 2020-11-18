@@ -31,26 +31,26 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="username" aria-describedby="emailHelp" placeholder="Enter userna
-me" maxlength="20" minlength="10" > <br />
+me" maxlength="20" minlength="10" required="required"> <br />
             <small id="emailHelp" class="form-text text-muted">
               do not share with anyone.</small>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" minlength="10" >
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" minlength="10" required="required">
             <small id="emailHelp" class="form-text text-muted">Please Do no share with anyone.</small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" maxlength="20" minlength="10" >
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" maxlength="20" minlength="10" required="required" >
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">Confirm Password</label>
-            <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="Password" maxlength="20" minlength="10">
+            <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="Password" maxlength="20" minlength="10" required="required">
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1" required="required">
             <label class="form-check-label" for="exampleCheck1">I Agree Terms and Conditions</label>
           </div>
           <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6Leaa-IZAAAAAM4w2ns0yYaqE8Wu-9Zem1GqOjDL"></div>

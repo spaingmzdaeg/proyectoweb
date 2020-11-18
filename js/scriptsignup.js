@@ -9,43 +9,6 @@
 }
 }*/
 
-$(document).ready(function() {
-
-
-  $('#addbuttonuser').click(function(e){
-    e.preventDefault();
-
-
-    var username = $("#username").val();
-    var email = $("#email").val();
-    var password = $("#password").val();
-    var confpassword = $("#confpassword").val();
-    //var exampleCheck1 = $("#exampleCheck1").val();
-
-
-    //console.log(exampleCheck1);
-    $.ajax({
-        type: "POST",
-        url: "formProcess.php",
-        dataType: "json",
-        data: {username:username, email:email, password:password, confpassword:confpassword},
-        success : function(data){
-            if (data.code == "200"){
-                alert("Success PHP: " +data.msg);
-            } else {
-                $(".display-error").html("<ul>"+data.msg+"</ul>");
-                $(".display-error").css("display","block");
-            }
-        },error: function (jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR);
-                  console.log(textStatus);
-                  console.log(errorThrown);
-        }
-    });
-
-
-  });
-});
 
 
 
@@ -59,7 +22,7 @@ function emailIsValid (email) {
 
 
 
-function validateForm() {/*
+function validateForm() {
   var username = document.forms["addformuser"]["username"].value;
   var email = document.forms["addformuser"]["email"].value;
   var password = document.forms["addformuser"]["password"].value;
@@ -102,13 +65,40 @@ function validateForm() {/*
     return false;
   }else {
     return true;
-  }*/
-  return true;
+  }
+  
 }
 
 
 
 $('form').on('submit', function(e) {
+
+  var username = $("#username").val();
+  var email = $("#email").val();
+  var password = $("#password").val();
+  var confpassword = $("#confpassword").val();
+  //var exampleCheck1 = $("#exampleCheck1").val();
+
+
+  //console.log(exampleCheck1);
+  $.ajax({
+      type: "POST",
+      url: "formProcess.php",
+      dataType: "json",
+      data: {username:username, email:email, password:password, confpassword:confpassword},
+      success : function(data){
+          if (data.code == "200"){
+              alert("Success PHP: " +data.msg);
+          } else {
+              $(".display-error").html("<ul>"+data.msg+"</ul>");
+              $(".display-error").css("display","block");
+          }
+      },error: function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+      }
+  });
   
   if(validateForm()){
     if(grecaptcha.getResponse() == "") {
