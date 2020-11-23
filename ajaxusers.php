@@ -11,6 +11,9 @@ if ($action == 'adduser' && !empty($_POST)) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $email = md5($email);
+    $password = md5($password);
+    
    // $position = $_POST['position'];
    //$country = $_POST['country'];
     //$photo = $_FILES['photo'];
