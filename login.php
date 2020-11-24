@@ -18,7 +18,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12"></div>
             <div class="col-md-4 col-sm-4 col-xs-12">
 
-                <form class="form-container" action="" method="POST">
+                <form class="form-container" id="loginuser" action="" method="POST">
                     <?php 
                     if(isset($errorLogin)){
                         echo $errorLogin;
@@ -30,16 +30,12 @@
                     
                     <div class="form-group">
                       <label for="exampleInputEmail1">USERNAME</label>
-                      <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                      <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Enter username" maxlength="20" minlength="10" required="required">
                       <small id="emailHelp" class="form-text text-muted">No compartas tus datos con nadie.</small>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" name = "password" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Aceptar terminos y condiciones</label>
+                      <input type="password" class="form-control" name = "password" id="username" placeholder="Password" maxlength="20" minlength="10" required="required">
                     </div>
                     <button type="submit" class="btn btn-success btn-block">Enviar</button>
                   </form>
@@ -54,6 +50,7 @@
     <!--============================SCRIPTS==============================-->
     <script src="bibliotecas/js/bootstrap.min.js"></script>
     <!--============================SCRIPTS==============================-->
+    <script src="js/scriptlogin.js"></script>
 
 </body>
 </html>
