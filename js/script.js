@@ -1,3 +1,100 @@
+/*function allLetter(inputtxt)
+      { 
+      var letters = /^[A-Za-z]+$/;
+      if(inputtxt.value.match(letters))
+      {
+      alert('Your name have accepted : you can try another');
+      return true;
+      }
+      else
+      {
+      alert('Please input alphabet characters only');
+      return false;
+      }
+      }*/
+
+      /*function allnumeric(inputtxt)
+      {
+         var numbers = /^[0-9]+$/;
+         if(inputtxt.value.match(numbers))
+         {
+        // alert('Your Registration number has accepted....');
+        // document.form1.text1.focus();
+         return true;
+         }
+         else
+         {
+        //alert('Please input numeric characters only');
+         //document.form1.text1.focus();
+         return false;
+         }
+      }   */   
+
+
+function validateFormPlayer() {
+  var firstname = document.forms["addform"]["first_name"].value;
+  var lastname = document.forms["addform"]["last_name"].value;
+  var team = document.forms["addform"]["id_team"].value;
+  var kit = document.forms["addform"]["kit"].value;
+  var position = document.forms["addform"]["position"].value;
+  var country = document.forms["addform"]["country"].value;
+  var letters = /^[A-Za-z]+$/;
+  var numbers = /^[0-9]+$/;
+  console.log(firstname);
+  console.log(lastname);
+  console.log(team);
+  console.log(kit);
+  console.log(position);
+if(firstname == ""){
+  alert("fill the firstname!");
+  return false;
+}else if(!firstname.match(letters)){
+  alert("First name ONLY LETTERS PLEASE!");
+  return false;
+}else if(firstname.length > 20){
+  alert("MAX 20 CHARACTERS");
+  return false;
+}else if(firstname.length < 4){
+  alert("MIN 4 CHARACTERS");
+  return false;
+}else if(!lastname.match(letters)){
+  alert("last name ONLY LETTERS PLEASE!");
+  return false;
+}else if(lastname.length > 20){
+  alert("MAX 20 CHARACTERS");
+  return false;
+}else if(lastname.length < 4){
+  alert("MIN 4 CHARACTERS");
+  return false;
+}else if(team == 0){
+  alert("Select a team please....");
+  return false;
+}else if(!kit.match(numbers)){
+  alert("only numbers!");
+  return false;
+}else if(kit == ""){
+  alert("fill field!");
+  return false;
+}else if(kit.length > 2){
+  alert("only 1 to 99");
+  return false;
+}else if(position == 0 ){
+  alert("select a position");
+  return false;
+}else if(position == 0 ){
+  alert("select a position");
+  return false;
+}else{
+  return true;
+}
+
+}
+
+
+     // validateFormPlayer();
+
+
+
 // get pagination
 function pagination(totalpages, currentpage) {
     var pagelist = "";
@@ -80,39 +177,45 @@ function pagination(totalpages, currentpage) {
   }
   
   $(document).ready(function () {
-    // add/edit user
+    // add/edit user   
     $(document).on("submit", "#addform", function (event) {
-      event.preventDefault();
-      var alertmsg =
-        $("#userid").val().length > 0
-          ? "Player has been updated Successfully!"
-          : "New Player has been added Successfully!";
-      $.ajax({
-        url: "/phpcrudajaxspain/ajax.php",
-        type: "POST",
-        dataType: "text",
-        data: new FormData(this),
-        processData: false,
-        contentType: false,
-        beforeSend: function () {
-          $("#overlay").fadeIn();
-        },
-        success: function (response) {
-          console.log(response);
-          if (response) {
-            $("#userModal").modal("hide");
-            $("#addform")[0].reset();
-            $(".message").html(alertmsg).fadeIn().delay(3000).fadeOut();
-            getplayers();
-            $("#overlay").fadeOut();
-          }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR);
-                  console.log(textStatus);
-                  console.log(errorThrown);
-        },
-      });
+      if(!validateFormPlayer()){
+        event.preventDefault();
+        alert("Fail with Register");
+      }else{
+        event.preventDefault();
+        var alertmsg =
+          $("#userid").val().length > 0
+            ? "Player has been updated Successfully!"
+            : "New Player has been added Successfully!";
+        $.ajax({
+          url: "/phpcrudajaxspain/ajax.php",
+          type: "POST",
+          dataType: "text",
+          data: new FormData(this),
+          processData: false,
+          contentType: false,
+          beforeSend: function () {
+            $("#overlay").fadeIn();
+          },
+          success: function (response) {
+            console.log(response);
+            if (response) {
+              $("#userModal").modal("hide");
+              $("#addform")[0].reset();
+              $(".message").html(alertmsg).fadeIn().delay(3000).fadeOut();
+              getplayers();
+              $("#overlay").fadeOut();
+            }
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+          },
+        });
+      }
+      
     });
      $(document).on("click", "a.edituser", function () {
     var pid = $(this).data("id");
@@ -255,4 +358,8 @@ function pagination(totalpages, currentpage) {
     // load players
     getplayers();
   });
-  
+  //validation
+
+
+
+      //validateFormPlayer();

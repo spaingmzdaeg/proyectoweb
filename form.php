@@ -366,3 +366,4 @@
 <!-- add/edit form modal end -->
 
 <script src="js/select.js"></script>
+<script src="js/playervalidation.js"></script>
