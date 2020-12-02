@@ -1,3 +1,5 @@
+
+
 <!-- add/edit form modal -->
 <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
   aria-hidden="true">
@@ -11,6 +13,8 @@
         </button>
       </div>
       <form id="addform" method="POST" enctype="multipart/form-data">
+      <div class="alert alert-danger display-error" style="display: none">
+    </div>
         <div class="modal-body">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">TEAM:</label>
@@ -41,7 +45,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"
                     aria-hidden="true"></i></span>
               </div>
-              <input type="text" class="form-control" id="first_name" name="first_name" required="required">
+              <input type="text" class="form-control" id="first_name" name="first_name">
             </div>
           </div>
           <div class="form-group">
@@ -51,7 +55,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"
                     aria-hidden="true"></i></span>
               </div>
-              <input type="text" class="form-control" id="last_name" name="last_name" required="required">
+              <input type="text" class="form-control" id="last_name" name="last_name" >
             </div>
           </div>
           <div class="form-group">
@@ -61,8 +65,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"
                     aria-hidden="true"></i></span>
               </div>
-              <input type="number" class="form-control" id="kit" name="kit" required="required" maxLength="2"
-                minLength="1">
+              <input type="number" class="form-control" id="kit" name="kit" >
             </div>
           </div>
           <div class="form-group">
@@ -72,7 +75,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle-o"
                     aria-hidden="true"></i>
               </div>
-              <select name="position" id="position" required="required">
+              <select name="position" id="position" >
                  <option value="Goalkeeper">Goalkeeper</option> 
                  <option value="Defender" selected>Defender</option>
                  <option value="Midfielder">Midfielder</option>

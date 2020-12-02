@@ -40,11 +40,7 @@ function validateFormPlayer() {
   var country = document.forms["addform"]["country"].value;
   var letters = /^[A-Za-z]+$/;
   var numbers = /^[0-9]+$/;
-  console.log(firstname);
-  console.log(lastname);
-  console.log(team);
-  console.log(kit);
-  console.log(position);
+
 if(firstname == ""){
   alert("fill the firstname!");
   return false;
@@ -179,6 +175,43 @@ function pagination(totalpages, currentpage) {
   $(document).ready(function () {
     // add/edit user   
     $(document).on("submit", "#addform", function (event) {
+
+      var first_name = $("#first_name").val();
+      var last_name = $("#last_name").val();
+      var id_team = $("#id_team").val();
+      var kit = $("#kit").val();
+      var position = $("#position").val();
+      
+      console.log(first_name);
+      console.log(last_name);
+      console.log(id_team);
+      console.log(kit);
+      console.log(position);
+ 
+  //var exampleCheck1 = $("#exampleCheck1").val();
+
+
+  //console.log(exampleCheck1);
+  $.ajax({
+      type: "POST",
+      url: "playerProcess.php",
+      dataType: "json",
+      data: {first_name:first_name, last_name:last_name, id_team:id_team, kit:kit,position:position},
+      success : function(data){
+          if (data.code == "200"){
+              alert("Success PHP: " +data.msg);
+          } else {
+              $(".display-error").html("<ul>"+data.msg+"</ul>");
+              $(".display-error").css("display","block");
+          }
+      },error: function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+      }
+  });
+
+      //////////////js
       if(!validateFormPlayer()){
         event.preventDefault();
         alert("Fail with Register");
