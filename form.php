@@ -45,7 +45,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"
                     aria-hidden="true"></i></span>
               </div>
-              <input type="text" class="form-control" id="first_name" name="first_name">
+              <input type="text" class="form-control" id="first_name" name="first_name" required="required" maxlength="20" minlength="5">
             </div>
           </div>
           <div class="form-group">
@@ -55,7 +55,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"
                     aria-hidden="true"></i></span>
               </div>
-              <input type="text" class="form-control" id="last_name" name="last_name" >
+              <input type="text" class="form-control" id="last_name" name="last_name" required="required" maxlength="20" minlength="5">
             </div>
           </div>
           <div class="form-group">
@@ -65,7 +65,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"
                     aria-hidden="true"></i></span>
               </div>
-              <input type="number" class="form-control" id="kit" name="kit" >
+              <input type="number" class="form-control" id="kit" name="kit" required="required" maxlength="2" minlength="1">
             </div>
           </div>
           <div class="form-group">
@@ -75,7 +75,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle-o"
                     aria-hidden="true"></i>
               </div>
-              <select name="position" id="position" >
+              <select name="position" id="position" required="required">
                  <option value="Goalkeeper">Goalkeeper</option> 
                  <option value="Defender" selected>Defender</option>
                  <option value="Midfielder">Midfielder</option>
@@ -91,7 +91,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle-o"
                     aria-hidden="true"></i>
               </div>
-              <select id="country" name="country" class="form-control">
+              <select id="country" name="country" class="form-control" required="required">
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>

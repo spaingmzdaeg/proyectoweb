@@ -388,9 +388,71 @@ function pagination(totalpages, currentpage) {
         $("#pagination").show();
       }
     });
+
+    // searching
+    $("#searchinput2").on("keyup", function () {
+      const searchText2 = $(this).val();
+      if (searchText2.length > 1) {
+        $.ajax({
+          url: "/phpcrudajaxspain/ajax.php",
+          type: "GET",
+          dataType: "json",
+          data: { searchQuery: searchText2, action: "search2" },
+          success: function (players) {
+            if (players) {
+              var playerslist = "";
+              $.each(players, function (index, player) {
+                playerslist += getplayerrow(player);
+              });
+              $("#userstable tbody").html(playerslist);
+              $("#pagination").hide();
+            }
+          },
+          error: function () {
+            console.log("something went wrong");
+          },
+        });
+      } else {
+        getplayers();
+        $("#pagination").show();
+      }
+    });
+
+
+     // searching
+     $("#searchinput3").on("keyup", function () {
+      const searchText3 = $(this).val();
+      if (searchText3.length > 1) {
+        $.ajax({
+          url: "/phpcrudajaxspain/ajax.php",
+          type: "GET",
+          dataType: "json",
+          data: { searchQuery: searchText3, action: "search3" },
+          success: function (players) {
+            if (players) {
+              var playerslist = "";
+              $.each(players, function (index, player) {
+                playerslist += getplayerrow(player);
+              });
+              $("#userstable tbody").html(playerslist);
+              $("#pagination").hide();
+            }
+          },
+          error: function () {
+            console.log("something went wrong");
+          },
+        });
+      } else {
+        getplayers();
+        $("#pagination").show();
+      }
+    });
+
     // load players
     getplayers();
   });
+
+  
   //validation
 
 

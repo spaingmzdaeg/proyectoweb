@@ -66,7 +66,24 @@ include_once 'profile.php';
             <span class="input-group-text" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></span>
           </div>
           <input type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-lg" placeholder="Search..." id="searchinput">
+            aria-describedby="inputGroup-sizing-lg" placeholder="Search first name" id="searchinput">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg" placeholder="Search last name" id="searchinput2">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg" placeholder="Search country" id="searchinput3">
+            <select name="id_team_search" id="id_team_search">
+                 <option value="1">AC Milan</option> 
+                 <option value="3" selected>Borussia Dortmund</option>
+                 <option value="4">Lyon</option>
+                 <option value="5">BATE Borisov</option>
+                 <option value="6">Schalke 04</option>
+                 <option value="7">Wisla Cracow</option>
+                 <option value="8">Paris Saint-Germain</option>
+                 <option value="9">Juventus</option>
+                 <option value="10">Ajax Amsterdam</option>
+                 <option value="11">Legia Warsaw</option>
+                 <option value="12">Spartak Moscow</option>
+              </select>
 
         </div>
       </div>
@@ -88,7 +105,10 @@ include_once 'playerstable.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/select.js"></script>
     <script src="js/script.js"></script>
+    
+    
     
 
     <script>  

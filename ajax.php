@@ -1,6 +1,7 @@
 <?php
 $action = $_REQUEST['action'];
 
+
 if (!empty($action)) {
     require_once 'includes/Player.php';
     $obj = new Player();
@@ -99,3 +100,19 @@ if ($action == 'search') {
     echo json_encode($results);
     exit();
 }
+
+if ($action == 'search2') {
+    $queryString = (!empty($_GET['searchQuery'])) ? trim($_GET['searchQuery']) : '';
+    $results = $obj->searchPlayerLastName($queryString);
+    echo json_encode($results);
+    exit();
+}
+
+if ($action == 'search3') {
+    $queryString = (!empty($_GET['searchQuery'])) ? trim($_GET['searchQuery']) : '';
+    $results = $obj->searchPlayerCountry($queryString);
+    echo json_encode($results);
+    exit();
+}
+
+
