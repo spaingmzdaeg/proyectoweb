@@ -115,4 +115,11 @@ if ($action == 'search3') {
     exit();
 }
 
+if ($action == 'search4') {
+    $queryString = (!empty($_GET['searchQuery'])) ? trim($_GET['searchQuery']) : '';
+    $results = $obj->searchPlayerTeam($queryString);
+    echo json_encode($results);
+    exit();
+}
+
 

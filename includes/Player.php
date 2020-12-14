@@ -132,7 +132,7 @@ class Player extends Database
         return $result;
     }
 
-    public function searchPlayer($searchText, $start = 0, $limit = 4)
+    public function searchPlayer($searchText, $start = 0, $limit = 500)
     {
         $sql = "SELECT * FROM {$this->tableName} WHERE first_name LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
@@ -146,7 +146,7 @@ class Player extends Database
         return $results;
     }
 
-    public function searchPlayerLastName($searchText, $start = 0, $limit = 4)
+    public function searchPlayerLastName($searchText, $start = 0, $limit = 500)
     {
         $sql = "SELECT * FROM {$this->tableName} WHERE last_name LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
@@ -160,9 +160,23 @@ class Player extends Database
         return $results;
     }
   
-    public function searchPlayerCountry($searchText, $start = 0, $limit = 4)
+    public function searchPlayerCountry($searchText, $start = 0, $limit = 500)
     {
         $sql = "SELECT * FROM {$this->tableName} WHERE country LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':search' => "{$searchText}%"]);
+        if ($stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $results = [];
+        }
+
+        return $results;
+    }
+
+    public function searchPlayerTeam($searchText, $start = 0, $limit = 500)
+    {
+        $sql = "SELECT * FROM {$this->tableName} WHERE id_team LIKE :search ORDER BY id_player DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':search' => "{$searchText}%"]);
         if ($stmt->rowCount() > 0) {

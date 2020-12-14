@@ -448,6 +448,35 @@ function pagination(totalpages, currentpage) {
       }
     });
 
+    // searching
+    $("#id_team_search").on("change", function () {
+      const searchText4 = $(this).val();
+      if (searchText4.length > 1) {
+        $.ajax({
+          url: "/phpcrudajaxspain/ajax.php",
+          type: "GET",
+          dataType: "json",
+          data: { searchQuery: searchText4, action: "search4" },
+          success: function (players) {
+            if (players) {
+              var playerslist = "";
+              $.each(players, function (index, player) {
+                playerslist += getplayerrow(player);
+              });
+              $("#userstable tbody").html(playerslist);
+              $("#pagination").hide();
+            }
+          },
+          error: function () {
+            console.log("something went wrong");
+          },
+        });
+      } else {
+        getplayers();
+        $("#pagination").show();
+      }
+    });
+
     // load players
     getplayers();
   });
